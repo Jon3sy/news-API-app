@@ -22,3 +22,45 @@ This news app is an open-source news aggregation app that fetches data from the 
  >"Life is Roblox" -  Dj Khaled 
 
 
+## dynamic api call
+```
+useEffect(() => {
+    const fetchNews = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get(
+                `https://newsapi.org/v2/top-headlines?country=${country}&language=${language}&category=${topic}&q=${searchTerm}&apiKey=${apiKey}`
+            );
+
+            // Update the articles and add the 'onSelect' property
+            const articles = response.data.articles.map((article) => {
+                return {
+                    ...article,
+                    onSelect: () => handleArticleSelect(article) // Passing the whole article object here
+                };
+            });
+
+            setNews(articles);
+            setLoading(false);
+        } catch (error) {
+            console.log(error);
+            setLoading(false);
+        }
+    };
+    fetchNews();
+}, [country, language, topic, searchTerm, apiKey]);
+```
+## context 
+```
+export const ArticleContext = createContext();
+
+export const ArticleContextProvider = ({ children }) =>{
+    const [selectedArticle, setSelectedArticle] = useState(null)
+
+    return(
+        <ArticleContext.Provider value={{selectedArticle, setSelectedArticle}}>
+            {children}
+        </ArticleContext.Provider>
+    )
+}
+```
