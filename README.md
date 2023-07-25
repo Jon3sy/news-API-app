@@ -1,3 +1,5 @@
+![Shaquille O'Neal dunking on a great white shark](https://e1.pxfuel.com/desktop-wallpaper/374/223/desktop-wallpaper-cool-shark-great-white-shark-shark-fish-tiger-shark-lamnidae.jpg)
+
 # NewsApi.org react demo
 ### React News app using NewsApi.org
 
